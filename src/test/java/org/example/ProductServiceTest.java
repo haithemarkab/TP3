@@ -1,26 +1,26 @@
 package org.example;
-
-import junit.framework.TestCase;
+import org.junit.Test;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
-
 import org.junit.Before;
-import org.junit.Test;
+
 
 public class ProductServiceTest {
-    private ProductService productService;
     private ProductApiClient productApiClient;
+    private ProductService productService;
+
 
     @Before
     public void setUp() {
-        productApiClient = mock(ProductApiClient.class);
         productService = new ProductService(productApiClient);
+        productApiClient = mock(ProductApiClient.class);
+
     }
 
     @Test
     public void testGetProduct_Success() {
-        String productId = "123";
-        Product expectedProduct = new Product(productId, "Sample Product", 100.0);
+        String productId = "1919";
+        Product expectedProduct = new Product(productId, "nokia", 1900.0);
         when(productApiClient.getProduct(productId)).thenReturn(expectedProduct);
         Product actualProduct = productService.getProduct(productId);
         assertEquals(expectedProduct, actualProduct);
@@ -29,17 +29,17 @@ public class ProductServiceTest {
 
     @Test(expected = RuntimeException.class)
     public void testGetProduct_APIFailure() {
-        String productId = "456";
+        String productId = "100";
         when(productApiClient.getProduct(productId)).thenThrow(new RuntimeException("API unavailable"));
         productService.getProduct(productId);
     }
     @Test
     public void testGetProduct_IncompatibleDataFormat() {
 
-        String productId = "456";
+        String productId = "200";
         when(productApiClient.getProduct(productId)).thenReturn(null);
         Product actualProduct = productService.getProduct(productId);
-        assertNull(actualProduct); // We expect null when data format is incompatible
+        assertNull(actualProduct);
         verify(productApiClient, times(1)).getProduct(productId);
     }
 

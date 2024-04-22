@@ -23,7 +23,7 @@ public class OrderControllerTest {
     @Test
     public void testCreateOrder_Success() {
 
-        Order order = new Order(1,"hadil_benseid",12);
+        Order order = new Order(1,"haithem",19);
         when(mockOrderService.createOrder(order)).thenReturn(true);
         boolean result = orderController.createOrder(order);
         verify(mockOrderService).createOrder(order);
@@ -34,7 +34,7 @@ public class OrderControllerTest {
 
     @Test
     public void testCreateOrder_Failure() {
-        Order order = new Order(1,"lina_benseid",8990);
+        Order order = new Order(1,"mohamed_arkab",1988);
         when(mockOrderService.createOrder(order)).thenReturn(false);
         boolean result = orderController.createOrder(order);
         verify(mockOrderService).createOrder(order);
@@ -43,7 +43,7 @@ public class OrderControllerTest {
     @Test
     public void testCreateOrder_FailureToSave() {
         OrderService orderService = new OrderService(mockOrderDao);
-        Order order = new Order(1,"ilhem",85);
+        Order order = new Order(1,"haithemm",19);
         when(mockOrderDao.saveOrder(order)).thenReturn(false);
 
         boolean result = orderService.createOrder(order);
