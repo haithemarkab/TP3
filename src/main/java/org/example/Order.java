@@ -4,8 +4,6 @@ public class Order {
     private long orderId;
     private String customerName;
     private double amount;
-
-    // Constructeur
     public Order(long orderId, String customerName, double amount) {
         this.orderId = orderId;
         this.customerName = customerName;
