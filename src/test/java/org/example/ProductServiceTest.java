@@ -3,20 +3,14 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 import org.junit.Before;
-
-
 public class ProductServiceTest {
     private ProductApiClient productApiClient;
     private ProductService productService;
-
-
     @Before
     public void setUp() {
         productService = new ProductService(productApiClient);
         productApiClient = mock(ProductApiClient.class);
-
     }
-
     @Test
     public void testGetProduct_Success() {
         String productId = "1919";
@@ -44,5 +38,11 @@ public class ProductServiceTest {
     }
 
 
-
+ /*   public void testGetProduct_Success() {
+        Product expectedProduct = new Product();
+        when(productApiClient.getProduct(productId)).thenReturn(expectedProduct);
+        Product actualProduct = productService.getProduct(productId);
+        assertEquals(expectedProduct, actualProduct);
+        verify(productApiClient, times(1)).getProduct(productId);
+    }*/
 }

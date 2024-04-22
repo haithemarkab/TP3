@@ -20,7 +20,7 @@ public class OrderControllerTest {
         orderController = new OrderController(mockOrderService);
     }
     @Test
-    public void testCreateOrder_Success() {
+    public void test_CreateOrder_Success() {
 
         Order order = new Order(1,"haithem",19);
         when(mockOrderService.createOrder(order)).thenReturn(true);
@@ -32,7 +32,7 @@ public class OrderControllerTest {
 
 
     @Test
-    public void testCreateOrder_Failure() {
+    public void test_CreateOrder_Failure() {
         Order order = new Order(1,"mohamed_arkab",1988);
         when(mockOrderService.createOrder(order)).thenReturn(false);
         boolean result = orderController.createOrder(order);
@@ -40,14 +40,19 @@ public class OrderControllerTest {
         assertFalse(result);
     }
     @Test
-    public void testCreateOrder_FailureToSave() {
+    public void test_CreateOrder_FailureToSave() {
         OrderService orderService = new OrderService(mockOrderDao);
         Order order = new Order(1,"haithemm",19);
         when(mockOrderDao.saveOrder(order)).thenReturn(false);
-
         boolean result = orderService.createOrder(order);
         verify(mockOrderDao).saveOrder(order);
         assertFalse(result);
+    }
+   /* public void test_CreateOrder_Failure() {
+        Order order = new Order(1,"mohamed_arkab",1988);
+        boolean result = orderController.createOrder(order);
+        verify(mockOrderService).createOrder(order);
+        assertFalse(result);*/
     }
 
 

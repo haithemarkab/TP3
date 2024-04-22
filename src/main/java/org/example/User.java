@@ -1,26 +1,21 @@
 package org.example;
 
 public class User {
-    private long id;
     private String username;
     private String email;
-
-    // Constructeur, getters et setters
+    private long id;
     public User(long id, String username, String email) {
-        this.id = id;
-        this.username = username;
         this.email = email;
+        this.username = username;
+        this.id = id;
     }
-
-    public long getId() {
-        return id;
-    }
-
     public String getUsername() {
         return username;
     }
-
     public String getEmail() {
         return email;
+    }
+    public long getId() {
+        return id;
     }
 }

@@ -1,11 +1,12 @@
 
 package org.example;
 import org.mockito.Mock;
+import org.junit.Test;
+import static org.mockito.Mockito.*;
 import org.mockito.MockitoAnnotations;
 import static org.junit.Assert.*;
 import org.junit.Before;
-import org.junit.Test;
-import static org.mockito.Mockito.*;
+
 public class UserServiceTest {
     public void setUp() {
         MockitoAnnotations.initMocks(this);

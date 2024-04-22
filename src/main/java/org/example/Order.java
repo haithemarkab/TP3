@@ -5,9 +5,9 @@ public class Order {
     private String customerName;
     private double amount;
     public Order(long orderId, String customerName, double amount) {
+        this.amount = amount;
         this.orderId = orderId;
         this.customerName = customerName;
-        this.amount = amount;
     }
 
 
